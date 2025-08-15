@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Hedera Wallet</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Hedera Wallet</h1>
+
+    <div class="section">
+        <h2>Check Balance</h2>
+        <input id="accountId" placeholder="Account ID (e.g., 0.0.xxxxx)">
+        <button onclick="checkBalance()">Get Balance</button>
+        <p id="balanceOutput"></p>
+    </div>
+
+    <div class="section">
+        <h2>Send HBAR</h2>
+        <input id="toAccount" placeholder="Recipient Account ID">
+        <input id="amount" placeholder="Amount in HBAR">
+        <button onclick="sendHBAR()">Send</button>
+        <p id="sendOutput"></p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
