@@ -20,5 +20,5 @@ async function sendHBAR() {
 
     const data = await res.json();
     document.getElementById("sendOutput").innerText = 
-        data.status ? `✅ Transaction successful: ${data.status}` : `❌ Error: ${data.error}`;
+        data.status ? ` Transaction successful: ${data.status}` : ` Error: ${data.error}`;
 }
