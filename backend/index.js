@@ -27,7 +27,7 @@ app.get("/favicon.ico", (req, res) => res.status(204).end());
 const requiredEnv = ["HEDERA_NETWORK", "OPERATOR_ID", "OPERATOR_KEY"];
 for (const key of requiredEnv) {
     if (!process.env[key]) {
-        console.error(`❌ Missing environment variable: ${key}`);
+        console.error(` Missing environment variable: ${key}`);
         process.exit(1);
     }
 }
@@ -48,7 +48,7 @@ app.get("/balance/:accountId", async (req, res) => {
             balance: balance.hbars.toString()
         });
     } catch (err) {
-        console.error("❌ Balance error:", err);
+        console.error(" Balance error:", err);
         res.status(500).json({ error: err.message });
     }
 });
@@ -58,10 +58,10 @@ app.post("/transfer", async (req, res) => {
     const { toAccountId, amount } = req.body;
     const amountNum = Number(amount);
 
-    console.log("🔁 Transfer request:", { toAccountId, amount, parsedAmount: amountNum });
+    console.log(" Transfer request:", { toAccountId, amount, parsedAmount: amountNum });
 
     if (!toAccountId || isNaN(amountNum) || amountNum <= 0) {
-        console.warn("❌ Invalid transfer parameters:", { toAccountId, amount });
+        console.warn(" Invalid transfer parameters:", { toAccountId, amount });
         return res.status(400).json({ error: "Invalid transfer parameters" });
     }
 
@@ -74,7 +74,7 @@ app.post("/transfer", async (req, res) => {
         const receipt = await tx.getReceipt(client);
         res.json({ status: receipt.status.toString() });
     } catch (err) {
-        console.error("❌ Transfer error:", err);
+        console.error(" Transfer error:", err);
         res.status(500).json({ error: err.message });
     }
 });
@@ -82,5 +82,5 @@ app.post("/transfer", async (req, res) => {
 //  Start the server
 const PORT = 3000;
 app.listen(PORT, () => {
-    console.log(`✅ Server running at http://localhost:${PORT}`);
+    console.log(`Server running at http://localhost:${PORT}`);
 });
